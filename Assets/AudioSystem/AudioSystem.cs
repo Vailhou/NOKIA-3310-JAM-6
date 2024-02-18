@@ -2,6 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SFXType
+{
+    Example,
+}
+
+[System.Serializable]
+public class SFXPair
+{
+    public SFXType Type;
+    public float Volume = 1;
+    public AudioClip[] Clips;
+}
+
 public class AudioSystem : MonoBehaviour
 {
     MusicPlayer musicPlayer;
@@ -23,6 +36,8 @@ public class AudioSystem : MonoBehaviour
         }
         musicPlayer.ChangeVolume(volume);
         soundEffectPlayer.ChangeVolume(0);
+
+        PlaySoundEffect(SFXType.Example);
     }
 
     public void PlaySong(int songIndex, bool repeat) {
@@ -34,15 +49,9 @@ public class AudioSystem : MonoBehaviour
         musicPlayer.ChangeVolume(volume);
     }
 
-    public void PlaySoundEffect(int soundEffectIndex) {
+    public void PlaySoundEffect(SFXType sfxType) {
         musicPlayer.ChangeVolume(0);
         soundEffectPlayer.ChangeVolume(volume);
-        soundEffectPlayer.PlaySoundEffect(soundEffectIndex);
-    }
-
-    public void PlaySoundEffect(string soundEffectName) {
-        musicPlayer.ChangeVolume(0);
-        soundEffectPlayer.ChangeVolume(volume);
-        soundEffectPlayer.PlaySoundEffect(soundEffectName);
+        soundEffectPlayer.PlaySoundEffect(sfxType);
     }
 }
