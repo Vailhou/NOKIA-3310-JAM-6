@@ -389,6 +389,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a70a27dbe58084090f28ac66f28742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _autoStartMusic: 1
+  _loopMusic: 1
   volume: 1
 --- !u!4 &476555625
 Transform:
