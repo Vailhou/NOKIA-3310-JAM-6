@@ -1,30 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
+public enum SongType
+{
+    Placeholder,
+}
+
+[System.Serializable]
+public class SongPair
+{
+    public SongType Type;
+    // public float Volume = 1;
+    public AudioClip[] Clips;
+}
 
 [RequireComponent(typeof(AudioSource))]
+
 public class MusicPlayer : MonoBehaviour
 {
-    AudioSource audioSource;
-    public AudioClip[] songs;
+    [Tooltip("Add a new enum in the the script for new items")]
+    [SerializeField] private SongPair[] _songPairs;
+
+    private AudioSource _audioSource;
 
     void Awake() {
-        audioSource = GetComponent<AudioSource>();   
+        _audioSource = GetComponent<AudioSource>();   
     }
 
-    public void PlaySong(int songIndex, bool repeat) {
-        audioSource.loop = repeat;
-        audioSource.clip = songs[songIndex];
-        audioSource.Play();
+    public void PlaySong(SongType songType, bool repeat) {
+        SongPair songPair = _songPairs.FirstOrDefault(pair => pair.Type == songType);
+        _audioSource.loop = repeat;
+        _audioSource.clip = songPair.Clips[Random.Range(0, songPair.Clips.Length)];
+        _audioSource.Play();
     }
 
     public void StopSong() {
-        audioSource.Stop();
+        _audioSource.Stop();
     }
 
     public void ChangeVolume(float volume) {
-        audioSource.volume = volume;
+        _audioSource.volume = volume;
     }
 
 }

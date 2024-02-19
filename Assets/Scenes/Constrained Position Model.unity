@@ -804,7 +804,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sfxPairs:
   - Type: 0
-    Volume: 0
     Clips:
     - {fileID: 8300000, guid: ea60c4216798b314b83ef56d000f59ba, type: 3}
     - {fileID: 8300000, guid: f021df9cc8b5f44499728c8ab31f0fc8, type: 3}
@@ -1164,7 +1163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b7889f1fb7aea14aaff711bee2c6a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  songs: []
+  _songPairs:
+  - Type: 0
+    Clips:
+    - {fileID: 8300000, guid: 1ba97dc69289f624683a98e9b2d7716f, type: 3}
 --- !u!1 &2084141214
 GameObject:
   m_ObjectHideFlags: 0

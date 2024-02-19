@@ -2,56 +2,61 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum SFXType
+public class AudioSystem : MonoSingleton<AudioSystem>
 {
-    Example,
-}
-
-[System.Serializable]
-public class SFXPair
-{
-    public SFXType Type;
-    public float Volume = 1;
-    public AudioClip[] Clips;
-}
-
-public class AudioSystem : MonoBehaviour
-{
-    MusicPlayer musicPlayer;
-    SoundEffectPlayer soundEffectPlayer;
+    [SerializeField] private bool _autoStartMusic;
+    [SerializeField] private bool _loopMusic;
 
     [Range(0, 1)]
-    public float volume;
+    [SerializeField] private float volume;
+
+    private MusicPlayer _musicPlayer;
+    private SFXPlayer _sfxPlayer;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        musicPlayer = GetComponentInChildren<MusicPlayer>();
-        soundEffectPlayer = GetComponentInChildren<SoundEffectPlayer>();
-        if(musicPlayer == null) {
+        _musicPlayer = GetComponentInChildren<MusicPlayer>();
+        _sfxPlayer = GetComponentInChildren<SFXPlayer>();
+        if (_musicPlayer == null) {
             Debug.LogWarning("No Music Player AudioSource childed to " + this);
         }
-        if(soundEffectPlayer == null) {
+        if (_sfxPlayer == null) {
             Debug.LogWarning("No Sound Effect Player AudioSource childed to " + this);
         }
-        musicPlayer.ChangeVolume(volume);
-        soundEffectPlayer.ChangeVolume(0);
+        _musicPlayer.ChangeVolume(volume);
+        _sfxPlayer.ChangeVolume(0);
 
-        PlaySoundEffect(SFXType.Example);
+        if (_autoStartMusic)
+        {
+            PlaySong(SongType.Placeholder, _loopMusic);
+        }
     }
 
-    public void PlaySong(int songIndex, bool repeat) {
-        musicPlayer.PlaySong(songIndex,repeat);
+    // TESTING START ---------------------------------------------------------------
+    private void Update()
+    {
+        // Check for keyboard input
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            PlaySoundEffect(SFXType.Placeholder);
+        }
+    }
+    // TESTING END -----------------------------------------------------------------
+
+    public void PlaySong(SongType songType, bool repeat) {
+        _musicPlayer.PlaySong(songType,repeat);
     }
 
     private void SwitchBackToMusic() {
-        soundEffectPlayer.ChangeVolume(0);
-        musicPlayer.ChangeVolume(volume);
+        _sfxPlayer.ChangeVolume(0);
+        _musicPlayer.ChangeVolume(volume);
     }
 
     public void PlaySoundEffect(SFXType sfxType) {
-        musicPlayer.ChangeVolume(0);
-        soundEffectPlayer.ChangeVolume(volume);
-        soundEffectPlayer.PlaySoundEffect(sfxType);
+        _musicPlayer.ChangeVolume(0);
+        _sfxPlayer.ChangeVolume(volume);
+        _sfxPlayer.PlaySoundEffect(sfxType);
     }
 }
