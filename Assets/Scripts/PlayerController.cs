@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CharacterController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] public float moveSpeed = 5f;
+    [SerializeField] private BulletCreatorController bulletCreatorController;
 
     private Vector2 moveAmount = Vector2.zero;
     public Vector2 LastDirection { get; private set; }
@@ -16,6 +17,16 @@ public class CharacterController : MonoBehaviour
         moveAmount = context.ReadValue<Vector2>();
     }
 
+    public void OnFire(InputAction.CallbackContext context)
+    {
+        Invoke("Shoot", 0f);
+    }
+
+    void Shoot()
+    {
+        bulletCreatorController.Fire();
+    }
+
     void MoveCharacter(Vector2 direction)
     {
         rb.velocity = direction * moveSpeed;
@@ -25,6 +36,7 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        Shoot();
     }
 
     void Update()
