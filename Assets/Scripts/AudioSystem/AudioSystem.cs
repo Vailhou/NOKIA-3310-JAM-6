@@ -34,17 +34,6 @@ public class AudioSystem : MonoSingleton<AudioSystem>
         }
     }
 
-    // TESTING START ---------------------------------------------------------------
-    private void Update()
-    {
-        // Check for keyboard input
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            PlaySoundEffect(SFXType.Placeholder);
-        }
-    }
-    // TESTING END -----------------------------------------------------------------
-
     public void PlaySong(SongType songType, bool repeat) {
         _musicPlayer.PlaySong(songType,repeat);
     }
