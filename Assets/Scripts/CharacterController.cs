@@ -5,7 +5,8 @@ public class CharacterController : MonoBehaviour
 {
     [SerializeField] public float moveSpeed = 5f;
 
-    Vector2 moveAmount = Vector2.zero;
+    private Vector2 moveAmount = Vector2.zero;
+    public Vector2 LastDirection { get; private set; }
 
     private Rigidbody2D rb;
 
@@ -18,6 +19,7 @@ public class CharacterController : MonoBehaviour
     void MoveCharacter(Vector2 direction)
     {
         rb.velocity = direction * moveSpeed;
+        LastDirection = direction;
     }
 
     void Start()
