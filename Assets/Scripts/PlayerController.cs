@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CharacterController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] public float moveSpeed = 5f;
+    [SerializeField] private BulletCreatorController bulletCreatorController;
 
     private Vector2 moveAmount = Vector2.zero;
     public Vector2 LastDirection { get; private set; }
@@ -14,6 +15,11 @@ public class CharacterController : MonoBehaviour
     {
         // read the value for the "move" action each event call
         moveAmount = context.ReadValue<Vector2>();
+    }
+
+    public void OnFire(InputAction.CallbackContext context)
+    {
+        bulletCreatorController.Fire();
     }
 
     void MoveCharacter(Vector2 direction)
