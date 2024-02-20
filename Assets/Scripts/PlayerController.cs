@@ -19,11 +19,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnFire(InputAction.CallbackContext context)
     {
-        Invoke("Shoot", 0f);
-    }
-
-    void Shoot()
-    {
         bulletCreatorController.Fire();
     }
 
@@ -36,7 +31,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Shoot();
     }
 
     void Update()

@@ -935,11 +935,11 @@ PrefabInstance:
     - target: {fileID: 3706152223182465730, guid: 1e30a579ea5d5d946b34faac118b63be, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1753385693}
     - target: {fileID: 3706152223182465730, guid: 1e30a579ea5d5d946b34faac118b63be, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 5757839530573718741, guid: 1e30a579ea5d5d946b34faac118b63be, type: 3}
+      objectReference: {fileID: 1753385693}
     - target: {fileID: 3706152223182465730, guid: 1e30a579ea5d5d946b34faac118b63be, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -949,12 +949,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3706152223182465730, guid: 1e30a579ea5d5d946b34faac118b63be, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 3706152223182465730, guid: 1e30a579ea5d5d946b34faac118b63be, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnFire
       objectReference: {fileID: 0}
     - target: {fileID: 3706152223182465730, guid: 1e30a579ea5d5d946b34faac118b63be, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3706152223182465730, guid: 1e30a579ea5d5d946b34faac118b63be, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CharacterController, Assembly-CSharp
+      value: PlayerController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3706152223182465730, guid: 1e30a579ea5d5d946b34faac118b63be, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
