@@ -15,17 +15,20 @@ public class PlayerController : MonoBehaviour
     {
         // read the value for the "move" action each event call
         moveAmount = context.ReadValue<Vector2>();
+        if (moveAmount.x + moveAmount.y != 0)
+        {
+            LastDirection = moveAmount;
+        }
     }
 
     public void OnFire(InputAction.CallbackContext context)
     {
-        bulletCreatorController.Fire();
+        bulletCreatorController.Fire(gameObject.transform.position, LastDirection);
     }
 
     void MoveCharacter(Vector2 direction)
     {
         rb.velocity = direction * moveSpeed;
-        LastDirection = direction;
     }
 
     void Start()
