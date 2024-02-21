@@ -18,12 +18,14 @@ public class PlayerController : MonoBehaviour
         if (moveAmount.x + moveAmount.y != 0)
         {
             LastDirection = moveAmount;
+            Debug.Log(LastDirection.x + " " + LastDirection.y);
         }
     }
 
     public void OnFire(InputAction.CallbackContext context)
     {
         bulletCreatorController.Fire(gameObject.transform.position, LastDirection);
+        AudioSystem.Instance.PlaySFX(SFXType.Fire);
     }
 
     void MoveCharacter(Vector2 direction)

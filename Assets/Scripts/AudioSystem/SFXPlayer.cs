@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum SFXType
 {
-    Placeholder,
+    Fire,
 }
 
 [System.Serializable]

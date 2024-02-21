@@ -10,14 +10,14 @@ public class AudioSystem : MonoSingleton<AudioSystem>
     [Range(0, 1)]
     [SerializeField] private float volume;
 
-    private MusicPlayer _musicPlayer;
+    private SongPlayer _musicPlayer;
     private SFXPlayer _sfxPlayer;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        _musicPlayer = GetComponentInChildren<MusicPlayer>();
+        _musicPlayer = GetComponentInChildren<SongPlayer>();
         _sfxPlayer = GetComponentInChildren<SFXPlayer>();
         if (_musicPlayer == null) {
             Debug.LogWarning("No Music Player AudioSource childed to " + this);
@@ -43,7 +43,7 @@ public class AudioSystem : MonoSingleton<AudioSystem>
         _musicPlayer.ChangeVolume(volume);
     }
 
-    public void PlaySoundEffect(SFXType sfxType) {
+    public void PlaySFX(SFXType sfxType) {
         _musicPlayer.ChangeVolume(0);
         _sfxPlayer.ChangeVolume(volume);
         _sfxPlayer.PlaySoundEffect(sfxType);

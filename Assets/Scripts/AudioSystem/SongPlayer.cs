@@ -18,7 +18,7 @@ public class SongPair
 
 [RequireComponent(typeof(AudioSource))]
 
-public class MusicPlayer : MonoBehaviour
+public class SongPlayer : MonoBehaviour
 {
     [Tooltip("Add a new enum in the the script for new items")]
     [SerializeField] private SongPair[] _songPairs;

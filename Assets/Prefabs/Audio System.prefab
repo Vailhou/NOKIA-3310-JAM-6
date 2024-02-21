@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 6112844711196556437}
   - component: {fileID: 5711513004459438593}
   m_Layer: 0
-  m_Name: Music Player
+  m_Name: Song Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 2850570888153266948}
   - component: {fileID: 8147738450234808493}
   m_Layer: 0
-  m_Name: SE Player
+  m_Name: SFX Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,8 +242,7 @@ MonoBehaviour:
   _sfxPairs:
   - Type: 0
     Clips:
-    - {fileID: 8300000, guid: ea60c4216798b314b83ef56d000f59ba, type: 3}
-    - {fileID: 8300000, guid: f021df9cc8b5f44499728c8ab31f0fc8, type: 3}
+    - {fileID: 8300000, guid: 937bc2b60b822f6479b64821925aea6c, type: 3}
 --- !u!82 &8147738450234808493
 AudioSource:
   m_ObjectHideFlags: 0
