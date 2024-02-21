@@ -13,7 +13,7 @@ public class VideoSettings : MonoBehaviour
     {
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 15;
-        Screen.SetResolution(504,288,false);
+        Screen.SetResolution(84,48,false);
     }
 
     // Update is called once per frame
