@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4892969432082148853}
   - component: {fileID: 1690120114110315719}
   - component: {fileID: 5765431826352940873}
+  - component: {fileID: 4401325797743914288}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -264,6 +265,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4401325797743914288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6696541445969057870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af16caff6817d0f4b828a73e1f446d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 6275225505013944339, guid: db4ea1e9864549c458a959ab965d6588, type: 3}
+  cooldownSeconds: 1
 --- !u!1001 &3415520309415580690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -420,6 +435,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5892168099435000816}
     m_Modifications:
+    - target: {fileID: 2569153214721740195, guid: 0852e855db632f142bec403fda2eb021, type: 3}
+      propertyPath: m_Name
+      value: TextField
+      objectReference: {fileID: 0}
     - target: {fileID: 2962649797724099239, guid: 0852e855db632f142bec403fda2eb021, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -472,7 +491,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1724361379884570350, guid: 0852e855db632f142bec403fda2eb021, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

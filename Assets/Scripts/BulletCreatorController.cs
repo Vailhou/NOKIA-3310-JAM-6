@@ -10,7 +10,7 @@ public class BulletCreatorController : MonoBehaviour
     [SerializeField] private BulletController bulletPrefab;
     [SerializeField] private float cooldownSeconds = 1;
 
-    [SerializeField] private bool canShoot = true;
+    private bool canShoot = true;
 
     public void Fire(Vector2 position, Vector2 direction)
     {
