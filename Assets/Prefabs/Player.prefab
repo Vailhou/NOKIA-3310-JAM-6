@@ -206,8 +206,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1690120114110315719}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnFire
-        m_Mode: 0
+        m_MethodName: Fire
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -361,6 +361,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 35
   bulletCreatorController: {fileID: 1851037111289073677, guid: d4ddc54cd623bf94498f0ca818468de0, type: 3}
+  deathDelay: 1
+  anim: {fileID: 0}
 --- !u!95 &5765431826352940873
 Animator:
   serializedVersion: 5

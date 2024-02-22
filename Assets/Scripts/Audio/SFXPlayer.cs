@@ -6,6 +6,8 @@ using UnityEngine;
 public enum SFXType
 {
     Fire,
+    WallDestruction,
+    PlayerDeath
 }
 
 [System.Serializable]

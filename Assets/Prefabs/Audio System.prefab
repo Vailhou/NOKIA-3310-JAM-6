@@ -43,12 +43,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 81781758935925292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9dafb2e5eecaf845af6290b337715bb, type: 3}
+  m_Script: {fileID: 11500000, guid: e69cbbf96b1453a44a52ed274fdbf237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _autoStartMusic: 0
-  _loopMusic: 0
-  volume: 0
+  _autoStartMusic: 1
+  _loopMusic: 1
+  volume: 1
 --- !u!1 &3738848840613961584
 GameObject:
   m_ObjectHideFlags: 0
