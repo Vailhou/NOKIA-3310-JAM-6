@@ -688,9 +688,10 @@ GameObject:
   - component: {fileID: 4457821327452838513}
   - component: {fileID: 4892969432082148853}
   - component: {fileID: 1690120114110315719}
+  - component: {fileID: 8531353913416869139}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -769,8 +770,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1690120114110315719}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: OnFire
-        m_Mode: 0
+        m_MethodName: Fire
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -894,7 +895,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -923,7 +924,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 35
-  bulletCreatorController: {fileID: 1851037111289073677, guid: d4ddc54cd623bf94498f0ca818468de0, type: 3}
+  bulletCreatorController: {fileID: 8531353913416869139}
+--- !u!114 &8531353913416869139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6696541445969057870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af16caff6817d0f4b828a73e1f446d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 6275225505013944339, guid: db4ea1e9864549c458a959ab965d6588, type: 3}
+  coolDownTime: 0
 --- !u!1 &7388106587940825799
 GameObject:
   m_ObjectHideFlags: 0

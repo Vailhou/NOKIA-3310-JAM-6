@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall 8x8px
       objectReference: {fileID: 0}
+    - target: {fileID: 7268653598737564609, guid: 9779bef071bf69c49bd39627e92450b1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -306,6 +310,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Audio System
       objectReference: {fileID: 0}
+    - target: {fileID: 2850570888153266948, guid: 86edf72efb1ee514380dfe72ed516b84, type: 3}
+      propertyPath: _sfxPairs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850570888153266948, guid: 86edf72efb1ee514380dfe72ed516b84, type: 3}
+      propertyPath: _sfxPairs.Array.data[1].Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850570888153266948, guid: 86edf72efb1ee514380dfe72ed516b84, type: 3}
+      propertyPath: _sfxPairs.Array.data[0].Clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850570888153266948, guid: 86edf72efb1ee514380dfe72ed516b84, type: 3}
+      propertyPath: _sfxPairs.Array.data[1].Clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850570888153266948, guid: 86edf72efb1ee514380dfe72ed516b84, type: 3}
+      propertyPath: _sfxPairs.Array.data[0].Clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 67652ed3c12240048898cf9f6a63a560, type: 3}
+    - target: {fileID: 2850570888153266948, guid: 86edf72efb1ee514380dfe72ed516b84, type: 3}
+      propertyPath: _sfxPairs.Array.data[1].Clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 67652ed3c12240048898cf9f6a63a560, type: 3}
     - target: {fileID: 4125506519487631060, guid: 86edf72efb1ee514380dfe72ed516b84, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -344,6 +372,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4125506519487631060, guid: 86edf72efb1ee514380dfe72ed516b84, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740340149138592439, guid: 86edf72efb1ee514380dfe72ed516b84, type: 3}
+      propertyPath: _autoStartMusic
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -416,6 +448,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4892969432082148853, guid: 35b3bfb495c426e478f3ff76585c6a61, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5892168099435000816, guid: 35b3bfb495c426e478f3ff76585c6a61, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22
@@ -459,6 +495,10 @@ PrefabInstance:
     - target: {fileID: 6696541445969057870, guid: 35b3bfb495c426e478f3ff76585c6a61, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8531353913416869139, guid: 35b3bfb495c426e478f3ff76585c6a61, type: 3}
+      propertyPath: coolDownTime
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
