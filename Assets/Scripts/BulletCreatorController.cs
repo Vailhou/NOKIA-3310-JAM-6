@@ -26,7 +26,7 @@ public class BulletCreatorController : MonoBehaviour
             Physics2D.IgnoreCollision(shooterCollider, bulletCollider);
         }
 
-        AudioSystem.Instance.PlaySFX(SFXType.Fire);
+        AudioPlayer.Instance.PlaySFX(SFXType.Fire);
         canShoot = false;
         StartCoroutine(Cooldown());
     }

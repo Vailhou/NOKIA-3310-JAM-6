@@ -1,10 +1,12 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IBulletTarget
 {
     [SerializeField] public float moveSpeed = 5f;
     [SerializeField] private BulletCreatorController bulletCreatorController;
+    [SerializeField] private float deathDelay = 1;
 
     private Vector2 moveAmount;
     public Vector2 LastDirection { get; private set; } = Vector2.up;
@@ -39,5 +41,11 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         MoveCharacter(moveAmount);
+    }
+
+    public void Hit()
+    {
+        AudioPlayer.Instance.PlaySFX(SFXType.PlayerDeath);
+        SceneLoader.Instance.ReloadCurrentScene(deathDelay);
     }
 }

@@ -895,7 +895,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -938,7 +938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6275225505013944339, guid: db4ea1e9864549c458a959ab965d6588, type: 3}
-  coolDownTime: 0
+  cooldownSeconds: 1
 --- !u!1 &7388106587940825799
 GameObject:
   m_ObjectHideFlags: 0
