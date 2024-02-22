@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioSystem : MonoSingleton<AudioSystem>
+public class AudioPlayer : MonoSingleton<AudioPlayer>
 {
-    [SerializeField] private bool _autoStartMusic;
-    [SerializeField] private bool _loopMusic;
+    [SerializeField] private bool _autoStartMusic = true;
+    [SerializeField] private bool _loopMusic = true;
 
     [Range(0, 1)]
-    [SerializeField] private float volume;
+    [SerializeField] private float volume = 1;
 
     private SongPlayer _musicPlayer;
     private SFXPlayer _sfxPlayer;
