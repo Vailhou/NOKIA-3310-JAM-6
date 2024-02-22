@@ -1,0 +1,35 @@
+Font: Ark  Style: Medium
+Point Size: 100   SP/PD Ratio: 0,0%
+
+Characters included: 73/96
+Missing characters: 0
+Excluded characters: 23
+
+Characters missing from font file:
+----------------------------------------
+
+Characters excluded from packing:
+----------------------------------------
+ID: 91	Hex: 5B	Char [[]
+ID: 92	Hex: 5C	Char [\]
+ID: 93	Hex: 5D	Char []]
+ID: 105	Hex: 69	Char [i]
+ID: 106	Hex: 6A	Char [j]
+ID: 107	Hex: 6B	Char [k]
+ID: 108	Hex: 6C	Char [l]
+ID: 109	Hex: 6D	Char [m]
+ID: 110	Hex: 6E	Char [n]
+ID: 111	Hex: 6F	Char [o]
+ID: 112	Hex: 70	Char [p]
+ID: 113	Hex: 71	Char [q]
+ID: 114	Hex: 72	Char [r]
+ID: 115	Hex: 73	Char [s]
+ID: 116	Hex: 74	Char [t]
+ID: 117	Hex: 75	Char [u]
+ID: 118	Hex: 76	Char [v]
+ID: 119	Hex: 77	Char [w]
+ID: 120	Hex: 78	Char [x]
+ID: 121	Hex: 79	Char [y]
+ID: 122	Hex: 7A	Char [z]
+ID: 123	Hex: 7B	Char [{]
+ID: 125	Hex: 7D	Char [}]

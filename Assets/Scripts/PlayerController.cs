@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float moveSpeed = 5f;
     [SerializeField] private BulletCreatorController bulletCreatorController;
 
+    [SerializeField] private Animator anim;
+
     private Vector2 moveAmount = Vector2.zero;
     public Vector2 LastDirection { get; private set; }
 
@@ -19,6 +21,10 @@ public class PlayerController : MonoBehaviour
         {
             LastDirection = moveAmount;
             Debug.Log(LastDirection.x + " " + LastDirection.y);
+
+            //Animator hommia
+            anim.SetFloat("LastDirX", LastDirection.x);
+            anim.SetFloat("LastDirY", LastDirection.y);
         }
     }
 
@@ -31,11 +37,15 @@ public class PlayerController : MonoBehaviour
     void MoveCharacter(Vector2 direction)
     {
         rb.velocity = direction * moveSpeed;
+
+        //Animator hommia
+        anim.SetFloat("Velocity", rb.velocity.magnitude);
     }
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
