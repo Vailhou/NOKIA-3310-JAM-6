@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
+
 public class BulletController : MonoBehaviour
 {
     [SerializeField] public float moveSpeed = 35f;
 
     private Rigidbody2D rb;
     public Vector2 direction;
-    public Collider2D shooterCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -37,12 +38,14 @@ public class BulletController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         collision.gameObject.TryGetComponent(out IBulletTarget bulletTarget);
-        
+        Destroy(gameObject);
         if (bulletTarget != null)
         {
             bulletTarget.Hit();
         }
-
-        Destroy(gameObject);
+        else
+        {
+            AudioPlayer.Instance.PlaySFX(SFXType.BulletHitColliderDefault);
+        }
     }
 }

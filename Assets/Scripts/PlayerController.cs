@@ -2,17 +2,28 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Animator))]
+
 public class PlayerController : MonoBehaviour, IBulletTarget
 {
     [SerializeField] public float moveSpeed = 5f;
-    [SerializeField] private BulletCreatorController bulletCreatorController;
     [SerializeField] private float deathDelay = 1;
-    [SerializeField] private Animator anim;
+    
+    private BulletCreatorController bulletCreatorController;
+    private Animator anim;
 
     private Vector2 moveAmount;
     public Vector2 LastDirection { get; private set; } = Vector2.up;
 
     private Rigidbody2D rb;
+
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        TryGetComponent(out bulletCreatorController);
+        TryGetComponent(out anim);
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -22,36 +33,24 @@ public class PlayerController : MonoBehaviour, IBulletTarget
         if (moveAmount.Equals(Vector2.zero)) { return; }
 
         LastDirection = moveAmount;
-        /* Tallessa Animaatiota varten
-         if (moveAmount.x + moveAmount.y != 0)
-        {
-            LastDirection = moveAmount;
-            Debug.Log(LastDirection.x + " " + LastDirection.y);
 
-            //Animator hommia
-            anim.SetFloat("LastDirX", LastDirection.x);
-            anim.SetFloat("LastDirY", LastDirection.y);
-        }
-         */
+        anim.SetFloat("LastDirX", LastDirection.x);
+        anim.SetFloat("LastDirY", LastDirection.y);
 
     }
 
     public void Fire()
     {
+        if (bulletCreatorController == null) { return; }
+        
         bulletCreatorController.Fire(gameObject.transform.position, LastDirection);
     }
-
-
 
     private void MoveCharacter(Vector2 direction)
     {
         rb.velocity = direction * moveSpeed;
     }
 
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
 
     private void Update()
     {
