@@ -2,6 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// 
+/// </summary>
 public class SceneLoader : MonoSingleton<SceneLoader>
 {
     public void ReloadCurrentScene(float delay = 0)

@@ -5,6 +5,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// 
+/// </summary>
 public class BulletCreatorController : MonoBehaviour
 {
     [SerializeField] private BulletController bulletPrefab;

@@ -2,6 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// 
+/// </summary>
 public class PlayerController : MonoBehaviour, IBulletTarget
 {
     [SerializeField] public float moveSpeed = 5f;

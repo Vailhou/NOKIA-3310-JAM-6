@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 /// <summary>
 /// UIssa controlli staminan esittämiselle. Mostly slider value change.
+/// 
 /// </summary>
 public class UIStaminaSlider : MonoBehaviour
 {

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 
+/// </summary>
 public class CameraPositionController : MonoBehaviour
 {
     // Start is called before the first frame update

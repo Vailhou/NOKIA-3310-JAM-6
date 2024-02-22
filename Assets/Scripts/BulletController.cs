@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// </summary>
 public class BulletController : MonoBehaviour
 {
     [SerializeField] public float moveSpeed = 35f;
@@ -11,7 +14,6 @@ public class BulletController : MonoBehaviour
     public Vector2 direction;
     public Collider2D shooterCollider;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 
+/// </summary>
 public class AudioPlayer : MonoSingleton<AudioPlayer>
 {
     [SerializeField] private bool _autoStartMusic = true;
