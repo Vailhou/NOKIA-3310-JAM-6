@@ -1,17 +1,15 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour, IBulletTarget
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] public float moveSpeed = 5f;
     [SerializeField] private BulletCreatorController bulletCreatorController;
-    [SerializeField] private float deathDelay = 1;
 
     [SerializeField] private Animator anim;
 
-    private Vector2 moveAmount;
-    public Vector2 LastDirection { get; private set; } = Vector2.up;
+    private Vector2 moveAmount = Vector2.zero;
+    public Vector2 LastDirection { get; private set; }
 
     private Rigidbody2D rb;
 
@@ -19,26 +17,24 @@ public class PlayerController : MonoBehaviour, IBulletTarget
     {
         // read the value for the "move" action each event call
         moveAmount = context.ReadValue<Vector2>();
-        if (moveAmount.Equals(Vector2.zero)) { return; }
-
-        LastDirection = moveAmount;
-        //if (moveAmount.x + moveAmount.y != 0)
-        //{
-        //    LastDirection = moveAmount;
-        //    Debug.Log(LastDirection.x + " " + LastDirection.y);
+        if (moveAmount.x + moveAmount.y != 0)
+        {
+            LastDirection = moveAmount;
+            Debug.Log(LastDirection.x + " " + LastDirection.y);
 
             //Animator hommia
-        //    anim.SetFloat("LastDirX", LastDirection.x);
-        //    anim.SetFloat("LastDirY", LastDirection.y);
-        //}
+            anim.SetFloat("LastDirX", LastDirection.x);
+            anim.SetFloat("LastDirY", LastDirection.y);
+        }
     }
 
-    public void Fire()
+    public void OnFire(InputAction.CallbackContext context)
     {
         bulletCreatorController.Fire(gameObject.transform.position, LastDirection);
+        AudioSystem.Instance.PlaySFX(SFXType.Fire);
     }
 
-    private void MoveCharacter(Vector2 direction)
+    void MoveCharacter(Vector2 direction)
     {
         rb.velocity = direction * moveSpeed;
 
@@ -46,20 +42,14 @@ public class PlayerController : MonoBehaviour, IBulletTarget
         anim.SetFloat("Velocity", rb.velocity.magnitude);
     }
 
-    private void Start()
+    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
 
-    private void Update()
+    void Update()
     {
         MoveCharacter(moveAmount);
-    }
-
-    public void Hit()
-    {
-        AudioPlayer.Instance.PlaySFX(SFXType.PlayerDeath);
-        SceneLoader.Instance.ReloadCurrentScene(deathDelay);
     }
 }
