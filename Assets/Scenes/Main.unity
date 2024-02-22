@@ -513,6 +513,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &803733296 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 81781758935925292, guid: 86edf72efb1ee514380dfe72ed516b84, type: 3}
+  m_PrefabInstance: {fileID: 2963445586878006394}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &803733299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803733296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e69cbbf96b1453a44a52ed274fdbf237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _autoStartMusic: 1
+  _loopMusic: 1
+  volume: 1
 --- !u!1 &1259935966
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,6 +598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6275225505013944339, guid: db4ea1e9864549c458a959ab965d6588, type: 3}
+  cooldownSeconds: 1
 --- !u!4 &1506861317
 Transform:
   m_ObjectHideFlags: 0
@@ -1018,10 +1039,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8077788045346327708, guid: 86edf72efb1ee514380dfe72ed516b84, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 81781758935925292, guid: 86edf72efb1ee514380dfe72ed516b84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 803733299}
   m_SourcePrefab: {fileID: 100100000, guid: 86edf72efb1ee514380dfe72ed516b84, type: 3}
 --- !u!1001 &7801266039467988342
 PrefabInstance:
