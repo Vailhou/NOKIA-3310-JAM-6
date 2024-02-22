@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4125506519487631060}
-  - component: {fileID: 8077788045346327708}
+  - component: {fileID: 4740340149138592439}
   m_Layer: 0
-  m_Name: AudioPlayer
+  m_Name: Audio System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 7397043481104015669}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8077788045346327708
+--- !u!114 &4740340149138592439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,10 +43,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 81781758935925292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9dafb2e5eecaf845af6290b337715bb, type: 3}
+  m_Script: {fileID: 11500000, guid: f3a70a27dbe58084090f28ac66f28742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _autoStartMusic: 0
+  _autoStartMusic: 1
   _loopMusic: 1
   volume: 1
 --- !u!1 &3738848840613961584
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 6112844711196556437}
   - component: {fileID: 5711513004459438593}
   m_Layer: 0
-  m_Name: SongPlayer
+  m_Name: Song Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 2850570888153266948}
   - component: {fileID: 8147738450234808493}
   m_Layer: 0
-  m_Name: SFXPlayer
+  m_Name: SFX Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,12 +243,6 @@ MonoBehaviour:
   - Type: 0
     Clips:
     - {fileID: 8300000, guid: 937bc2b60b822f6479b64821925aea6c, type: 3}
-  - Type: 1
-    Clips:
-    - {fileID: 8300000, guid: 67652ed3c12240048898cf9f6a63a560, type: 3}
-  - Type: 2
-    Clips:
-    - {fileID: 8300000, guid: cfceee3f79949d04fbc765312f87d2d0, type: 3}
 --- !u!82 &8147738450234808493
 AudioSource:
   m_ObjectHideFlags: 0
