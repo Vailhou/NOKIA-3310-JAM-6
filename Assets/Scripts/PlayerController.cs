@@ -13,10 +13,10 @@ public class PlayerController : MonoBehaviour, IBulletTarget
     private Animator anim;
 
     private Vector2 moveAmount;
-    public Vector2 LastDirection { get; private set; } = Vector2.up;
-
     private Rigidbody2D rb;
 
+    public Vector2 LastDirection { get; private set; } = Vector2.up;
+    public Vector2 PlayerPosition { get => transform.position; }
 
     private void Start()
     {
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour, IBulletTarget
     {
         if (bulletCreatorController == null) { return; }
         
-        bulletCreatorController.Fire(gameObject.transform.position, LastDirection);
+        bulletCreatorController.FireAtDirection(gameObject.transform.position, LastDirection);
     }
 
     private void MoveCharacter(Vector2 direction)
