@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class SceneChange : MonoBehaviour
+public class ReplayButton : MonoBehaviour
 {  
     // Kenttä, johon syötetään seuraavan scenen ID.
     public string nextSceneName;
