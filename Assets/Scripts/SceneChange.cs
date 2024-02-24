@@ -6,17 +6,11 @@ public class SceneChange : MonoBehaviour
 {  
     // Kenttä, johon syötetään seuraavan scenen ID.
     public string nextSceneName;
-    // Kenttä, johon vedetään replay-painike.
-    public Button replayButton;
+    public GameObject player;
 
-    // Vaihtaa scenen pelaajan liikkuessa siirtymäalueelle.
-    private void ButtonOnClick()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        replayButton.onClick.AddListener(DoOnClick);
-    }
-
-    private void DoOnClick()
-    {
-        SceneManager.LoadScene(nextSceneName);
+        if(collision.gameObject == player)
+            SceneManager.LoadScene(nextSceneName);
     }
 }
