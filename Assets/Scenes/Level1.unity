@@ -3047,7 +3047,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3277196977792710886, guid: 538127f65cdffa44a8dd8f72153a57b3, type: 3}
       propertyPath: m_Name
-      value: Enemy (12)
+      value: Enemy (12) NOT SHOOTING
       objectReference: {fileID: 0}
     - target: {fileID: 7201849554555396168, guid: 538127f65cdffa44a8dd8f72153a57b3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12766,6 +12766,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2721156349759113119, guid: 538127f65cdffa44a8dd8f72153a57b3, type: 3}
+      propertyPath: shootingCooldown
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3277196977792710886, guid: 538127f65cdffa44a8dd8f72153a57b3, type: 3}
       propertyPath: m_Name
       value: Enemy (14)
@@ -25635,7 +25639,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3277196977792710886, guid: 538127f65cdffa44a8dd8f72153a57b3, type: 3}
       propertyPath: m_Name
-      value: Enemy (10)
+      value: Enemy (10) NOT SHOOTING
       objectReference: {fileID: 0}
     - target: {fileID: 7201849554555396168, guid: 538127f65cdffa44a8dd8f72153a57b3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37369,9 +37373,9 @@ SceneRoots:
   - {fileID: 1637956989}
   - {fileID: 2079428516}
   - {fileID: 213623637}
+  - {fileID: 1549528665}
   - {fileID: 966153600}
+  - {fileID: 173017634}
   - {fileID: 946422661}
   - {fileID: 763604664}
-  - {fileID: 1549528665}
-  - {fileID: 173017634}
   - {fileID: 1582561068}
