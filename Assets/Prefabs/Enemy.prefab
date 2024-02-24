@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70cf7d114df9c7442a11ffcfafd6888e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootingCooldown: 2
 --- !u!1 &6143460871152040109
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c251f5d61f35e124789bbbac39a5477d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyController: {fileID: 2721156349759113119}
 --- !u!1001 &7742749553197627863
 PrefabInstance:
   m_ObjectHideFlags: 0

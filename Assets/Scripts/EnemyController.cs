@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour, IBulletTarget
 {
     private BulletCreatorController bulletCreatorController;
-
+    [SerializeField] private float shootingCooldown = 1;
+    private Coroutine shootingAndCooldown;
 
     private void Start()
     {
@@ -14,14 +15,25 @@ public class EnemyController : MonoBehaviour, IBulletTarget
 
     public void Hit()
     {
+        DeactivateEnemy();
+        AudioPlayer.Instance.PlaySFX(SFXType.EnemyDeath);
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void ActivateEnemy(PlayerController playerController)
     {
-        collision.gameObject.TryGetComponent(out PlayerController playerController);
-        if (playerController == null) { return; }
+        shootingAndCooldown = StartCoroutine(ShootingLoop(playerController));
+    }
 
-        bulletCreatorController.FireAtDirection(transform.position, playerController.PlayerPosition);
+    public void DeactivateEnemy()
+    {
+        StopCoroutine(shootingAndCooldown);
+    }
+
+    private IEnumerator ShootingLoop(PlayerController playerController)
+    {
+        bulletCreatorController.FireFireAtPosition(transform.position, playerController.PlayerPosition);
+        yield return new WaitForSeconds(shootingCooldown);
+        shootingAndCooldown = StartCoroutine(ShootingLoop(playerController));
     }
 }

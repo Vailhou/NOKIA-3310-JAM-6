@@ -3,31 +3,37 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
 
 public class BulletController : MonoBehaviour
 {
     [SerializeField] public float moveSpeed = 35f;
+    [SerializeField] public float lifeTimeSeconds = 2f;
 
     private Rigidbody2D rb;
     public Vector2 direction;
+    public Collider2D BulletCollider { get; private set; }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        BulletCollider = GetComponent<Collider2D>();
+    }
+
+    private void Start()
+    {
         StartCoroutine(TheLifeAndDeathOfTheBullet());
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         rb.velocity = direction * moveSpeed;
     }
 
     private IEnumerator TheLifeAndDeathOfTheBullet()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(lifeTimeSeconds);
 
         if (!gameObject.IsDestroyed())
         {

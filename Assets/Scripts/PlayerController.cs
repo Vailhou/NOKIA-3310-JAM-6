@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,23 +7,29 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, IBulletTarget
 {
+    public Vector2 LastDirection { get; private set; } = Vector2.up;
+    public Vector2 PlayerPosition { get => transform.position; }
+
     [SerializeField] public float moveSpeed = 5f;
     [SerializeField] private float deathDelay = 1;
-    
+    [SerializeField] private float shootingCooldownSeconds = 1;
+
     private BulletCreatorController bulletCreatorController;
     private Animator anim;
-
     private Vector2 moveAmount;
     private Rigidbody2D rb;
 
-    public Vector2 LastDirection { get; private set; } = Vector2.up;
-    public Vector2 PlayerPosition { get => transform.position; }
+    private Coroutine cooldown;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         TryGetComponent(out bulletCreatorController);
         TryGetComponent(out anim);
+    }
+    private void Update()
+    {
+        MoveCharacter(moveAmount);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -41,20 +48,10 @@ public class PlayerController : MonoBehaviour, IBulletTarget
 
     public void Fire()
     {
-        if (bulletCreatorController == null) { return; }
-        
+        if (bulletCreatorController == null || cooldown != null) { return; }
+
+        cooldown = StartCoroutine(ShootingCooldown());
         bulletCreatorController.FireAtDirection(gameObject.transform.position, LastDirection);
-    }
-
-    private void MoveCharacter(Vector2 direction)
-    {
-        rb.velocity = direction * moveSpeed;
-    }
-
-
-    private void Update()
-    {
-        MoveCharacter(moveAmount);
     }
 
     public void Hit()
@@ -62,5 +59,15 @@ public class PlayerController : MonoBehaviour, IBulletTarget
         AudioPlayer.Instance.PlaySFX(SFXType.PlayerDeath);
         anim.SetTrigger("Death");
         SceneLoader.Instance.ReloadCurrentScene(deathDelay);
+    }
+    private void MoveCharacter(Vector2 direction)
+    {
+        rb.velocity = direction * moveSpeed;
+    }
+
+    private IEnumerator ShootingCooldown()
+    {
+        yield return new WaitForSeconds(shootingCooldownSeconds);
+        cooldown = null;
     }
 }

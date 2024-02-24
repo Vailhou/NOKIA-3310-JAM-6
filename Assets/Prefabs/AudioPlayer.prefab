@@ -68,14 +68,22 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
       propertyPath: _sfxPairs.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
       propertyPath: _sfxPairs.Array.data[3].Type
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
+      propertyPath: _sfxPairs.Array.data[4].Type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
       propertyPath: _sfxPairs.Array.data[3].Clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
+      propertyPath: _sfxPairs.Array.data[4].Clips.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
@@ -86,6 +94,10 @@ PrefabInstance:
       propertyPath: _sfxPairs.Array.data[3].Clips.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 67652ed3c12240048898cf9f6a63a560, type: 3}
+    - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
+      propertyPath: _sfxPairs.Array.data[4].Clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: fe162d84afa880a43b16911344a3c374, type: 3}
     - target: {fileID: 7476225113472276706, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

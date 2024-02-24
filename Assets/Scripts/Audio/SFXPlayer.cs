@@ -8,7 +8,8 @@ public enum SFXType
     Fire,
     WallDestruction,
     PlayerDeath,
-    BulletHitColliderDefault
+    BulletHitColliderDefault,
+    EnemyDeath
 }
 
 [System.Serializable]

@@ -8,27 +8,19 @@ using UnityEngine.InputSystem;
 public class BulletCreatorController : MonoBehaviour
 {
     [SerializeField] private BulletController bulletPrefab;
-    [SerializeField] private float cooldownSeconds = 1;
-
-    private bool canShoot = true;
 
     public void FireAtDirection(Vector2 firingPosition, Vector2 direction)
     {
-        if (canShoot == false) { return; }
         BulletController bullet = Instantiate(bulletPrefab, firingPosition, new Quaternion());
         bullet.direction = direction;
-        
-        gameObject.TryGetComponent(out Collider2D shooterCollider);
-        bullet.gameObject.TryGetComponent(out Collider2D bulletCollider);
 
-        if (shooterCollider != null && bulletCollider != null)
-        {
-            Physics2D.IgnoreCollision(shooterCollider, bulletCollider);
+        Collider2D[] shooterColliders = gameObject.GetComponents<Collider2D>();
+
+        foreach (Collider2D shooterCollider in shooterColliders) {
+            Physics2D.IgnoreCollision(shooterCollider, bullet.BulletCollider);
         }
 
         AudioPlayer.Instance.PlaySFX(SFXType.Fire);
-        canShoot = false;
-        StartCoroutine(Cooldown());
     }
 
     public void FireFireAtPosition(Vector2 firingPosition, Vector2 targetPosition)
@@ -44,11 +36,5 @@ public class BulletCreatorController : MonoBehaviour
 
         // Convert the angle to a Vector2 representing the cosine and sine components
         return new Vector2(Mathf.Cos(angleInRadians), Mathf.Sin(angleInRadians));
-    }
-
-    private IEnumerator Cooldown()
-    {
-        yield return new WaitForSeconds(cooldownSeconds);
-        canShoot = true;
     }
 }
