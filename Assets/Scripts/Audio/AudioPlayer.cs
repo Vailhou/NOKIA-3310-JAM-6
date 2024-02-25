@@ -4,48 +4,71 @@ using UnityEngine;
 
 public class AudioPlayer : MonoSingleton<AudioPlayer>
 {
-    [SerializeField] private bool _autoStartMusic = true;
-    [SerializeField] private bool _loopMusic = true;
+    [SerializeField] private bool autoStartMusic = true;
+    [SerializeField] private bool loopMusic = true;
 
     [Range(0, 1)]
     [SerializeField] private float volume = 1;
 
-    private SongPlayer _musicPlayer;
-    private SFXPlayer _sfxPlayer;
+    private SongPlayer musicPlayer;
+    private SFXPlayer sfxPlayer;
+    private bool playingWholeSFX = false;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        _musicPlayer = GetComponentInChildren<SongPlayer>();
-        _sfxPlayer = GetComponentInChildren<SFXPlayer>();
-        if (_musicPlayer == null) {
+        musicPlayer = GetComponentInChildren<SongPlayer>();
+        sfxPlayer = GetComponentInChildren<SFXPlayer>();
+        if (musicPlayer == null) {
             Debug.LogWarning("No Music Player AudioSource childed to " + this);
         }
-        if (_sfxPlayer == null) {
+        if (sfxPlayer == null) {
             Debug.LogWarning("No Sound Effect Player AudioSource childed to " + this);
         }
-        _musicPlayer.ChangeVolume(volume);
-        _sfxPlayer.ChangeVolume(0);
+        musicPlayer.ChangeVolume(volume);
+        sfxPlayer.ChangeVolume(0);
 
-        if (_autoStartMusic)
+        SFXPlayer.CompletedPlayingSFX += SwitchBackToMusic;
+
+        if (autoStartMusic)
         {
-            PlaySong(SongType.Placeholder, _loopMusic);
+            PlaySong(SongType.Placeholder, loopMusic);
         }
     }
 
-    public void PlaySong(SongType songType, bool repeat) {
-        _musicPlayer.PlaySong(songType,repeat);
+    public void PlaySong(SongType songType, bool repeat)
+    {
+        musicPlayer.PlaySong(songType,repeat);
     }
 
-    private void SwitchBackToMusic() {
-        _sfxPlayer.ChangeVolume(0);
-        _musicPlayer.ChangeVolume(volume);
+    private void SwitchBackToMusic()
+    {
+        playingWholeSFX = false;
+        sfxPlayer.ChangeVolume(0);
+        musicPlayer.ChangeVolume(volume);
     }
 
-    public void PlaySFX(SFXType sfxType) {
-        _musicPlayer.ChangeVolume(0);
-        _sfxPlayer.ChangeVolume(volume);
-        _sfxPlayer.PlaySoundEffect(sfxType);
+    public void PlayInterruptableSFX(SFXType sfxType)
+    {
+        if (playingWholeSFX) { return; }
+
+        PlaySFX(sfxType);
+    }
+
+    public void PlaySFXAndStopAudio(SFXType sfxType)
+    {
+        PlayUninterruptableSFX(sfxType);
+    }
+
+    public void PlayUninterruptableSFX(SFXType sfxType)
+    {
+        PlayInterruptableSFX(sfxType);
+        playingWholeSFX = true;
+    }
+
+    private void PlaySFX(SFXType sfxType)
+    {
+        musicPlayer.ChangeVolume(0);
+        sfxPlayer.ChangeVolume(volume);
+        sfxPlayer.PlaySFX(sfxType);
     }
 }

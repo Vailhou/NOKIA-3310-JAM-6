@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum SFXType
 {
@@ -25,28 +27,30 @@ public class SFXPair
 public class SFXPlayer : MonoBehaviour
 {
     [Tooltip("Add a new enum in the the script for new items")]
-    [SerializeField] private SFXPair[] _sfxPairs;
+    [SerializeField] private SFXPair[] sfxPairs;
 
-    private AudioSource _audioSource;
+    public static event Action CompletedPlayingSFX;
+    private AudioSource audioSource;
 
-    void Awake() {
-        _audioSource = GetComponent<AudioSource>();
-        _audioSource.loop = false;
+    private void Awake() {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.loop = false;
     }
 
-    public void PlaySoundEffect(SFXType sfxType) {
-        SFXPair sfxpair = _sfxPairs.FirstOrDefault(pair => pair.Type == sfxType);
-        _audioSource.clip = sfxpair.Clips[Random.Range(0, sfxpair.Clips.Length)];
-        _audioSource.Play();
-        StartCoroutine(CompletedSoundEffect(_audioSource.clip.length));
+    public void PlaySFX(SFXType sfxType) {
+        SFXPair sfxpair = sfxPairs.FirstOrDefault(pair => pair.Type == sfxType);
+        audioSource.clip = sfxpair.Clips[UnityEngine.Random.Range(0, sfxpair.Clips.Length)];
+        audioSource.Play();
+        StartCoroutine(CompletedSoundEffect(audioSource.clip.length));
     }
 
     private IEnumerator CompletedSoundEffect(float audioClipLength) {
         yield return new WaitForSeconds(audioClipLength);
         SendMessageUpwards("SwitchBackToMusic");
+        //CompletedPlayingSFX.Invoke();
     }
 
     public void ChangeVolume(float volume) {
-        _audioSource.volume = volume;
+        audioSource.volume = volume;
     }
 }

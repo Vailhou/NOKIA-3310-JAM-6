@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour, IBulletTarget
     public void Hit()
     {
         DeactivateEnemy();
-        AudioPlayer.Instance.PlaySFX(SFXType.EnemyDeath);
+        AudioPlayer.Instance.PlayInterruptableSFX(SFXType.EnemyDeath);
         Destroy(gameObject);
     }
 

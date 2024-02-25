@@ -20,7 +20,7 @@ public class BulletCreatorController : MonoBehaviour
             Physics2D.IgnoreCollision(shooterCollider, bullet.BulletCollider);
         }
 
-        AudioPlayer.Instance.PlaySFX(SFXType.Fire);
+        AudioPlayer.Instance.PlayInterruptableSFX(SFXType.Fire);
     }
 
     public void FireFireAtPosition(Vector2 firingPosition, Vector2 targetPosition)

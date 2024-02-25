@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour, IBulletTarget
 
     public void Hit()
     {
-        AudioPlayer.Instance.PlaySFX(SFXType.PlayerDeath);
+        AudioPlayer.Instance.PlayUninterruptableSFX(SFXType.PlayerDeath);
         anim.SetTrigger("Death");
         SceneLoader.Instance.ReloadCurrentScene(deathDelay);
     }

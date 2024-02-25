@@ -21,27 +21,27 @@ public class SongPair
 public class SongPlayer : MonoBehaviour
 {
     [Tooltip("Add a new enum in the the script for new items")]
-    [SerializeField] private SongPair[] _songPairs;
+    [SerializeField] private SongPair[] songPairs;
 
-    private AudioSource _audioSource;
+    private AudioSource audioSource;
 
     void Awake() {
-        _audioSource = GetComponent<AudioSource>();   
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void PlaySong(SongType songType, bool repeat) {
-        SongPair songPair = _songPairs.FirstOrDefault(pair => pair.Type == songType);
-        _audioSource.loop = repeat;
-        _audioSource.clip = songPair.Clips[Random.Range(0, songPair.Clips.Length)];
-        _audioSource.Play();
+        SongPair songPair = songPairs.FirstOrDefault(pair => pair.Type == songType);
+        audioSource.loop = repeat;
+        audioSource.clip = songPair.Clips[Random.Range(0, songPair.Clips.Length)];
+        audioSource.Play();
     }
 
     public void StopSong() {
-        _audioSource.Stop();
+        audioSource.Stop();
     }
 
     public void ChangeVolume(float volume) {
-        _audioSource.volume = volume;
+        audioSource.volume = volume;
     }
 
 }

@@ -8,7 +8,7 @@ public class DestructiveWall : MonoBehaviour, IBulletTarget
 {
     public void Hit()
     {
-        AudioPlayer.Instance.PlaySFX(SFXType.WallDestruction);
+        AudioPlayer.Instance.PlayInterruptableSFX(SFXType.WallDestruction);
         Destroy(gameObject);
     }
 }

@@ -51,7 +51,7 @@ public class BulletController : MonoBehaviour
         }
         else
         {
-            AudioPlayer.Instance.PlaySFX(SFXType.BulletHitColliderDefault);
+            AudioPlayer.Instance.PlayInterruptableSFX(SFXType.BulletHitColliderDefault);
         }
     }
 }
