@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e69cbbf96b1453a44a52ed274fdbf237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _autoStartMusic: 0
-  _loopMusic: 1
+  autoStartMusic: 0
+  loopMusic: 1
   volume: 1
 --- !u!81 &1173685724274244165
 AudioListener:
@@ -67,8 +67,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 4125506519487631060}
     m_Modifications:
     - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
+      propertyPath: sfxPairs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
       propertyPath: _sfxPairs.Array.size
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
+      propertyPath: sfxPairs.Array.data[1].Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
+      propertyPath: sfxPairs.Array.data[2].Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
+      propertyPath: sfxPairs.Array.data[3].Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
+      propertyPath: sfxPairs.Array.data[4].Type
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
       propertyPath: _sfxPairs.Array.data[3].Type
@@ -79,6 +99,26 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
+      propertyPath: sfxPairs.Array.data[0].Clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
+      propertyPath: sfxPairs.Array.data[1].Clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
+      propertyPath: sfxPairs.Array.data[2].Clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
+      propertyPath: sfxPairs.Array.data[3].Clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
+      propertyPath: sfxPairs.Array.data[4].Clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
       propertyPath: _sfxPairs.Array.data[3].Clips.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -86,6 +126,26 @@ PrefabInstance:
       propertyPath: _sfxPairs.Array.data[4].Clips.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
+      propertyPath: sfxPairs.Array.data[0].Clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 937bc2b60b822f6479b64821925aea6c, type: 3}
+    - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
+      propertyPath: sfxPairs.Array.data[1].Clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 604838ca3b0f3a647b8af3563f83bd69, type: 3}
+    - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
+      propertyPath: sfxPairs.Array.data[2].Clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: cfceee3f79949d04fbc765312f87d2d0, type: 3}
+    - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
+      propertyPath: sfxPairs.Array.data[3].Clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 67652ed3c12240048898cf9f6a63a560, type: 3}
+    - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
+      propertyPath: sfxPairs.Array.data[4].Clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: fe162d84afa880a43b16911344a3c374, type: 3}
     - target: {fileID: 2803547827643187923, guid: b8c7a0e9630525e4884f2ee940e2ecda, type: 3}
       propertyPath: _sfxPairs.Array.data[1].Clips.Array.data[0]
       value: 
@@ -160,6 +220,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4125506519487631060}
     m_Modifications:
+    - target: {fileID: 1132639551564386419, guid: ff159eafb01b85142a071800d42a1967, type: 3}
+      propertyPath: songPairs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132639551564386419, guid: ff159eafb01b85142a071800d42a1967, type: 3}
+      propertyPath: songPairs.Array.data[0].Clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132639551564386419, guid: ff159eafb01b85142a071800d42a1967, type: 3}
+      propertyPath: songPairs.Array.data[0].Clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1ba97dc69289f624683a98e9b2d7716f, type: 3}
     - target: {fileID: 5160433425661258099, guid: ff159eafb01b85142a071800d42a1967, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

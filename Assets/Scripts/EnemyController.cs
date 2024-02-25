@@ -6,7 +6,11 @@ public class EnemyController : MonoBehaviour, IBulletTarget
 {
     private BulletCreatorController bulletCreatorController;
     [SerializeField] private float shootingCooldown = 1;
+
+    private float cooldownLeft = 0.1f;
+    private bool enemyActive = false;
     private Coroutine shootingAndCooldown;
+    private PlayerController player;
 
     private void Start()
     {
@@ -22,12 +26,15 @@ public class EnemyController : MonoBehaviour, IBulletTarget
 
     public void ActivateEnemy(PlayerController playerController)
     {
-        shootingAndCooldown = StartCoroutine(ShootingLoop(playerController));
+        //shootingAndCooldown = StartCoroutine(ShootingLoop(playerController));
+        player = playerController;
+        enemyActive = true;
     }
 
     public void DeactivateEnemy()
     {
-        StopCoroutine(shootingAndCooldown);
+        //StopCoroutine(shootingAndCooldown);
+        enemyActive = false;
     }
 
     private IEnumerator ShootingLoop(PlayerController playerController)
@@ -35,5 +42,21 @@ public class EnemyController : MonoBehaviour, IBulletTarget
         bulletCreatorController.FireFireAtPosition(transform.position, playerController.PlayerPosition);
         yield return new WaitForSeconds(shootingCooldown);
         shootingAndCooldown = StartCoroutine(ShootingLoop(playerController));
+    }
+
+    private void FixedUpdate()
+    {
+        if (enemyActive == false) { return; }
+
+        if (cooldownLeft > 0)
+        {
+            cooldownLeft -= Time.fixedDeltaTime * ObjectMovements.timeScale;
+        }
+        else
+        {
+            bulletCreatorController.FireFireAtPosition(transform.position, player.PlayerPosition);
+            cooldownLeft = shootingCooldown;
+            Debug.Log("Fired bullet");
+        }
     }
 }

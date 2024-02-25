@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(Animator))]
 
 public class PlayerController : MonoBehaviour, IBulletTarget
@@ -14,20 +15,26 @@ public class PlayerController : MonoBehaviour, IBulletTarget
     [SerializeField] private float deathDelay = 1;
     [SerializeField] private float shootingCooldownSeconds = 1;
 
-    private BulletCreatorController bulletCreatorController;
-    private Animator anim;
-    private Vector2 moveAmount;
     private Rigidbody2D rb;
+    private PlayerInput playerInput;
+    private Animator anim;
+    private BulletCreatorController bulletCreatorController;
 
+    private Vector2 moveAmount;
     private Coroutine cooldown;
+    private bool characterMoving;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerInput = GetComponent<PlayerInput>();
+        anim = GetComponent<Animator>();
         TryGetComponent(out bulletCreatorController);
-        TryGetComponent(out anim);
+
+        playerInput.actions["Move"].canceled += OnMovementCanceled;
+        playerInput.actions["Move"].started += OnMovementStarted;
     }
-    private void Update()
+    private void FixedUpdate()
     {
         MoveCharacter(moveAmount);
     }
@@ -43,7 +50,16 @@ public class PlayerController : MonoBehaviour, IBulletTarget
 
         anim.SetFloat("LastDirX", LastDirection.x);
         anim.SetFloat("LastDirY", LastDirection.y);
+    }
 
+    private void OnMovementCanceled(InputAction.CallbackContext context)
+    {
+        ObjectMovements.timeScale = 1;
+    }
+
+    private void OnMovementStarted(InputAction.CallbackContext context)
+    {
+        ObjectMovements.timeScale = 0;
     }
 
     public void Fire()
@@ -56,13 +72,14 @@ public class PlayerController : MonoBehaviour, IBulletTarget
 
     public void Hit()
     {
+
         AudioPlayer.Instance.PlayUninterruptableSFX(SFXType.PlayerDeath);
         anim.SetTrigger("Death");
         SceneLoader.Instance.ReloadCurrentScene(deathDelay);
     }
     private void MoveCharacter(Vector2 direction)
     {
-        rb.velocity = direction * moveSpeed;
+        rb.velocity = moveSpeed * direction;
     }
 
     private IEnumerator ShootingCooldown()

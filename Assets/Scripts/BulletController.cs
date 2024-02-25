@@ -8,37 +8,38 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    [SerializeField] public float moveSpeed = 35f;
-    [SerializeField] public float lifeTimeSeconds = 2f;
-
-    private Rigidbody2D rb;
     public Vector2 direction;
     public Collider2D BulletCollider { get; private set; }
+
+    [SerializeField] private float moveSpeed = 35f;
+    [SerializeField] private float lifeTimeSeconds = 2f;
+
+    private Rigidbody2D rb;
+    private float lifeTimeLeft;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         BulletCollider = GetComponent<Collider2D>();
+        lifeTimeLeft = lifeTimeSeconds;
     }
 
-    private void Start()
+    private void FixedUpdate()
     {
-        StartCoroutine(TheLifeAndDeathOfTheBullet());
-    }
-
-    private void Update()
-    {
-        rb.velocity = direction * moveSpeed;
-    }
-
-    private IEnumerator TheLifeAndDeathOfTheBullet()
-    {
-        yield return new WaitForSeconds(lifeTimeSeconds);
-
-        if (!gameObject.IsDestroyed())
+        // The Life And Death Of The Bullet
+        if (lifeTimeLeft > 0)
         {
-            Destroy(gameObject);
+            lifeTimeLeft -= Time.fixedDeltaTime * ObjectMovements.timeScale;
         }
+        else
+        {
+            if (!gameObject.IsDestroyed())
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        rb.velocity = moveSpeed * ObjectMovements.timeScale * direction;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
