@@ -129,7 +129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6275225505013944339, guid: db4ea1e9864549c458a959ab965d6588, type: 3}
-  cooldownSeconds: 1
 --- !u!114 &2721156349759113119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,8 +364,28 @@ PrefabInstance:
     - {fileID: -4668803638091377182, guid: 2f63aedd44fa3b44c92f80a6179a5abb, type: 3}
     - {fileID: 6192238547436268741, guid: 2f63aedd44fa3b44c92f80a6179a5abb, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 2f63aedd44fa3b44c92f80a6179a5abb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6742418188845647525}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: 2f63aedd44fa3b44c92f80a6179a5abb, type: 3}
+--- !u!1 &7823889919502588010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8653719598885068355, guid: 2f63aedd44fa3b44c92f80a6179a5abb, type: 3}
+  m_PrefabInstance: {fileID: 7742749553197627863}
+  m_PrefabAsset: {fileID: 0}
+--- !u!210 &6742418188845647525
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7823889919502588010}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!4 &8961059043871113225 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: 2f63aedd44fa3b44c92f80a6179a5abb, type: 3}
