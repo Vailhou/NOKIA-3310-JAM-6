@@ -55,9 +55,10 @@ MonoBehaviour:
   moveSpeed: 35
   deathDelay: 1
   shootingCooldownSeconds: 1
-  staminaAmount: 5
+  staminaAmount: 4
   minStaminaToMove: 1
   slowMoTimeScale: 0
+  startSlowDownAtPercentage: 0.1
 --- !u!114 &3518618825785750417
 MonoBehaviour:
   m_ObjectHideFlags: 0

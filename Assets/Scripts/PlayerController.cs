@@ -168,6 +168,7 @@ public class PlayerController : MonoBehaviour, IBulletTarget
     private void StopCharacter()
     {
         rb.velocity = Vector2.zero;
+        anim.SetFloat("Velocity", rb.velocity.magnitude);
     }
 
     private IEnumerator ShootingCooldown()
