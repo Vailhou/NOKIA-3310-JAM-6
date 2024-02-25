@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5892168099435000816}
+  - component: {fileID: 1690120114110315719}
   - component: {fileID: 3518618825785750417}
   - component: {fileID: 195593307403155718}
   - component: {fileID: 4892969432082148853}
-  - component: {fileID: 1690120114110315719}
   - component: {fileID: 5599778742193390907}
   - component: {fileID: 5765431826352940873}
   - component: {fileID: 4401325797743914288}
@@ -40,6 +40,24 @@ Transform:
   - {fileID: 8560233554982501564}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1690120114110315719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6696541445969057870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e33b364c91f8944696772247daf6ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 35
+  deathDelay: 1
+  shootingCooldownSeconds: 1
+  staminaAmount: 5
+  minStaminaToMove: 1
+  slowMoTimeScale: 0
 --- !u!114 &3518618825785750417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,21 +204,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.95, y: 5.95}
   m_EdgeRadius: 0
---- !u!114 &1690120114110315719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6696541445969057870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e33b364c91f8944696772247daf6ace, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 35
-  deathDelay: 1
-  shootingCooldownSeconds: 1
 --- !u!114 &5599778742193390907
 MonoBehaviour:
   m_ObjectHideFlags: 0

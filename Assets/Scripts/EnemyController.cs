@@ -56,7 +56,6 @@ public class EnemyController : MonoBehaviour, IBulletTarget
         {
             bulletCreatorController.FireFireAtPosition(transform.position, player.PlayerPosition);
             cooldownLeft = shootingCooldown;
-            Debug.Log("Fired bullet");
         }
     }
 }

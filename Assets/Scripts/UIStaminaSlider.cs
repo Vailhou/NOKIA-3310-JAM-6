@@ -1,21 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Slider))]
+
 /// <summary>
-/// UIssa controlli staminan esittämiselle. Mostly slider value change.
+/// UI representation of stamina. Mostly slider value change.
 /// </summary>
 public class UIStaminaSlider : MonoBehaviour
 {
-    [SerializeField] Slider slider; //Staminan slider componentti
+    [SerializeField] private Slider slider; //Stamina slider component
 
-    void Start()
+    private void Awake()
     {
         slider = GetComponent<Slider>();
-
-        //TEMP: Testi että slider muuttuu
-        slider.value = 30;
     }
 
+    public void SetSliderPercentage(float percentage)
+    {
+        if (percentage < 0f || percentage > 1f)
+        {
+            Debug.LogError("Percentage representing value must be between 0 and 1.");
+            return;
+        }
+
+        slider.value = percentage * slider.maxValue;
+    }
 }

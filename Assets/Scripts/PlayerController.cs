@@ -14,29 +14,106 @@ public class PlayerController : MonoBehaviour, IBulletTarget
     [SerializeField] public float moveSpeed = 5f;
     [SerializeField] private float deathDelay = 1;
     [SerializeField] private float shootingCooldownSeconds = 1;
+    [SerializeField] private float staminaAmount = 5;
+    [SerializeField] private float minStaminaToMove = 2;
+    [SerializeField] private float slowMoTimeScale = 0;
+    
+    [Range(0.0f, 1.0f)]
+    [SerializeField] private float startSlowDownAtPercentage = 0.1f;
 
     private Rigidbody2D rb;
     private PlayerInput playerInput;
     private Animator anim;
+    private UIStaminaSlider uiStaminaSlider;
     private BulletCreatorController bulletCreatorController;
 
     private Vector2 moveAmount;
     private Coroutine cooldown;
-    private bool characterMoving;
+    private bool isCharacterTryingToMove = false;
+    private bool isCharacterAbleToMove = true;
+    private float staminaLeft;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
         anim = GetComponent<Animator>();
+        uiStaminaSlider = GetComponentInChildren<UIStaminaSlider>();
         TryGetComponent(out bulletCreatorController);
 
-        playerInput.actions["Move"].canceled += OnMovementCanceled;
-        playerInput.actions["Move"].started += OnMovementStarted;
+        staminaLeft = staminaAmount;
+        ObjectMovements.timeScale = 0;
+
+        playerInput.actions["Move"].canceled += OnMovementInputCanceled;
+        playerInput.actions["Move"].started += OnMovementInputStarted;
     }
     private void FixedUpdate()
     {
+        if (isCharacterTryingToMove)
+        {
+            if (isCharacterAbleToMove)
+            {
+                MoveCharacter();
+            }
+            else
+            {
+                RechargeStamina();
+            }
+        }
+        else
+        {
+            RechargeStamina();
+        }
+
+        uiStaminaSlider.SetSliderPercentage(staminaLeft/staminaAmount);
+    }
+
+    private void MoveCharacter()
+    {
         MoveCharacter(moveAmount);
+
+        // Slow player down before stopping
+        if (staminaLeft < staminaAmount * startSlowDownAtPercentage)
+        {
+            MoveCharacter(staminaLeft / staminaAmount / startSlowDownAtPercentage * moveAmount);
+        }
+        else
+        {
+            MoveCharacter(moveAmount);
+        }
+
+        staminaLeft -= Time.deltaTime;
+        ObjectMovements.timeScale = slowMoTimeScale;
+
+        if (staminaLeft <= 0)
+        {
+            staminaLeft = 0;
+            DisableCharacterMovement();
+        }
+    }
+
+    private void DisableCharacterMovement()
+    {
+        isCharacterAbleToMove = false;
+        StopCharacter();
+
+        // TODO UNCOMMENT AFTER DEBUG
+    }
+
+    private void RechargeStamina()
+    {
+        ObjectMovements.timeScale = 1;
+        staminaLeft += Time.deltaTime;
+
+        if (staminaLeft > staminaAmount)
+        {
+            staminaLeft = staminaAmount;
+        }
+
+        if (staminaLeft >= minStaminaToMove)
+        {
+            isCharacterAbleToMove = true;
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -52,14 +129,17 @@ public class PlayerController : MonoBehaviour, IBulletTarget
         anim.SetFloat("LastDirY", LastDirection.y);
     }
 
-    private void OnMovementCanceled(InputAction.CallbackContext context)
+    private void OnMovementInputStarted(InputAction.CallbackContext context)
     {
-        ObjectMovements.timeScale = 1;
+        isCharacterTryingToMove = true;
     }
 
-    private void OnMovementStarted(InputAction.CallbackContext context)
+    private void OnMovementInputCanceled(InputAction.CallbackContext context)
     {
-        ObjectMovements.timeScale = 0;
+        isCharacterTryingToMove = false;
+        
+        // Need for the character to stop after stamina runs out
+        MoveCharacter(moveAmount);
     }
 
     public void Fire()
@@ -72,14 +152,21 @@ public class PlayerController : MonoBehaviour, IBulletTarget
 
     public void Hit()
     {
-
+        DisableCharacterMovement();
         AudioPlayer.Instance.PlayUninterruptableSFX(SFXType.PlayerDeath);
         anim.SetTrigger("Death");
         SceneLoader.Instance.ReloadCurrentScene(deathDelay);
+        playerInput.actions["Move"].canceled -= OnMovementInputCanceled;
+        playerInput.actions["Move"].started -= OnMovementInputStarted;
     }
     private void MoveCharacter(Vector2 direction)
     {
         rb.velocity = moveSpeed * direction;
+    }
+
+    private void StopCharacter()
+    {
+        rb.velocity = Vector2.zero;
     }
 
     private IEnumerator ShootingCooldown()
