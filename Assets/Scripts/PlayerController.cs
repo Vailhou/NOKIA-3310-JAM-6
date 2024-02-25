@@ -162,6 +162,7 @@ public class PlayerController : MonoBehaviour, IBulletTarget
     private void MoveCharacter(Vector2 direction)
     {
         rb.velocity = moveSpeed * direction;
+        anim.SetFloat("Velocity", rb.velocity.magnitude);
     }
 
     private void StopCharacter()
