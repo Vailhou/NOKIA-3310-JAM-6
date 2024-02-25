@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0}
-  moveSpeed: 17.5
+  moveSpeed: 20
   lifeTimeSeconds: 4
 --- !u!114 &2905640144629771556
 MonoBehaviour:
