@@ -47,9 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e69cbbf96b1453a44a52ed274fdbf237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoStartMusic: 1
-  loopMusic: 0
-  musicVolume: 0.5
+  musicVolume: 1
   sfxVolume: 1
 --- !u!81 &1173685724274244165
 AudioListener:
