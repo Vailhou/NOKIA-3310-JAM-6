@@ -74,6 +74,12 @@ public class PlayerController : MonoBehaviour, IBulletTarget
         uiStaminaSlider.SetSliderPercentage(staminaLeft/staminaAmount);
     }
 
+    private void OnDisable()
+    {
+        playerInput.actions["Move"].canceled -= OnMovementInputCanceled;
+        playerInput.actions["Move"].started -= OnMovementInputStarted;
+    }
+
     private void StartCharacterMovement()
     {
         hasCharacterStartedMoving = true;
@@ -165,12 +171,12 @@ public class PlayerController : MonoBehaviour, IBulletTarget
 
     public void Hit()
     {
+        Debug.Log("PLAYER DIED");
         DisableCharacterMovement();
         AudioPlayer.Instance.PlayUninterruptableSFX(SFXType.PlayerDeath);
         anim.SetTrigger("Death");
+        
         SceneLoader.Instance.ReloadCurrentScene(deathDelay);
-        playerInput.actions["Move"].canceled -= OnMovementInputCanceled;
-        playerInput.actions["Move"].started -= OnMovementInputStarted;
     }
     private void MoveCharacter(Vector2 direction)
     {
