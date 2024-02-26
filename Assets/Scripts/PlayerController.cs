@@ -83,7 +83,9 @@ public class PlayerController : MonoBehaviour, IBulletTarget
     private void StartCharacterMovement()
     {
         hasCharacterStartedMoving = true;
-        AudioPlayer.Instance.PlaySong(SongType.TimeFreezeSong, true);
+        //AudioPlayer.Instance.PlaySong(SongType.TimeFreezeSong, true);
+        FindObjectOfType(typeof(AudioPlayer)).GetComponent<AudioPlayer>()
+            .PlaySong(SongType.TimeFreezeSong, true);
     }
 
     private void MoveCharacter()
