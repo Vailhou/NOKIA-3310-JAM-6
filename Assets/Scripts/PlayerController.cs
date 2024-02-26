@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour, IBulletTarget
     private bool isCharacterTryingToMove = false;
     private bool isCharacterAbleToMove = true;
     private float staminaLeft;
+    private bool hasCharacterStartedMoving = false;
 
     private void Awake()
     {
@@ -53,6 +54,11 @@ public class PlayerController : MonoBehaviour, IBulletTarget
         {
             if (isCharacterAbleToMove)
             {
+                if (hasCharacterStartedMoving == false)
+                {
+                    StartCharacterMovement();
+                }
+
                 MoveCharacter();
             }
             else
@@ -66,6 +72,12 @@ public class PlayerController : MonoBehaviour, IBulletTarget
         }
 
         uiStaminaSlider.SetSliderPercentage(staminaLeft/staminaAmount);
+    }
+
+    private void StartCharacterMovement()
+    {
+        hasCharacterStartedMoving = true;
+        AudioPlayer.Instance.PlaySong(SongType.TimeFreezeSong, true);
     }
 
     private void MoveCharacter()
@@ -95,9 +107,9 @@ public class PlayerController : MonoBehaviour, IBulletTarget
     private void DisableCharacterMovement()
     {
         isCharacterAbleToMove = false;
+        hasCharacterStartedMoving = false;
         StopCharacter();
-
-        // TODO UNCOMMENT AFTER DEBUG
+        AudioPlayer.Instance.PlaySong(SongType.TimeMovingSong, true);
     }
 
     private void RechargeStamina()
@@ -140,6 +152,7 @@ public class PlayerController : MonoBehaviour, IBulletTarget
         
         // Need for the character to stop after stamina runs out
         MoveCharacter(moveAmount);
+        AudioPlayer.Instance.PlaySong(SongType.TimeMovingSong, true);
     }
 
     public void Fire()

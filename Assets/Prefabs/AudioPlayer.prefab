@@ -47,9 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e69cbbf96b1453a44a52ed274fdbf237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoStartMusic: 0
-  loopMusic: 1
-  volume: 1
+  autoStartMusic: 1
+  loopMusic: 0
+  musicVolume: 0.5
+  sfxVolume: 1
 --- !u!81 &1173685724274244165
 AudioListener:
   m_ObjectHideFlags: 0
@@ -222,16 +223,52 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1132639551564386419, guid: ff159eafb01b85142a071800d42a1967, type: 3}
       propertyPath: songPairs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132639551564386419, guid: ff159eafb01b85142a071800d42a1967, type: 3}
+      propertyPath: songPairs.Array.data[1].Type
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132639551564386419, guid: ff159eafb01b85142a071800d42a1967, type: 3}
+      propertyPath: songPairs.Array.data[2].Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132639551564386419, guid: ff159eafb01b85142a071800d42a1967, type: 3}
+      propertyPath: songPairs.Array.data[3].Type
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1132639551564386419, guid: ff159eafb01b85142a071800d42a1967, type: 3}
       propertyPath: songPairs.Array.data[0].Clips.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1132639551564386419, guid: ff159eafb01b85142a071800d42a1967, type: 3}
+      propertyPath: songPairs.Array.data[1].Clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132639551564386419, guid: ff159eafb01b85142a071800d42a1967, type: 3}
+      propertyPath: songPairs.Array.data[2].Clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132639551564386419, guid: ff159eafb01b85142a071800d42a1967, type: 3}
+      propertyPath: songPairs.Array.data[3].Clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132639551564386419, guid: ff159eafb01b85142a071800d42a1967, type: 3}
       propertyPath: songPairs.Array.data[0].Clips.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 1ba97dc69289f624683a98e9b2d7716f, type: 3}
+      objectReference: {fileID: 8300000, guid: 23eeea6903d03a74b8c4f43937d3c263, type: 3}
+    - target: {fileID: 1132639551564386419, guid: ff159eafb01b85142a071800d42a1967, type: 3}
+      propertyPath: songPairs.Array.data[1].Clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8b2433866c160294eb6dedba7e163d55, type: 3}
+    - target: {fileID: 1132639551564386419, guid: ff159eafb01b85142a071800d42a1967, type: 3}
+      propertyPath: songPairs.Array.data[2].Clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 18fd81db45e5a094fbbbc9500e4cd65e, type: 3}
+    - target: {fileID: 1132639551564386419, guid: ff159eafb01b85142a071800d42a1967, type: 3}
+      propertyPath: songPairs.Array.data[3].Clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e2078df785491f94089c2162379ee2bc, type: 3}
     - target: {fileID: 5160433425661258099, guid: ff159eafb01b85142a071800d42a1967, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

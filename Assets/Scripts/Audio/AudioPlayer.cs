@@ -8,7 +8,10 @@ public class AudioPlayer : MonoSingleton<AudioPlayer>
     [SerializeField] private bool loopMusic = true;
 
     [Range(0, 1)]
-    [SerializeField] private float volume = 1;
+    [SerializeField] private float musicVolume = 1;
+
+    [Range(0, 1)]
+    [SerializeField] private float sfxVolume = 1;
 
     private SongPlayer musicPlayer;
     private SFXPlayer sfxPlayer;
@@ -24,14 +27,14 @@ public class AudioPlayer : MonoSingleton<AudioPlayer>
         if (sfxPlayer == null) {
             Debug.LogWarning("No Sound Effect Player AudioSource childed to " + this);
         }
-        musicPlayer.ChangeVolume(volume);
+        musicPlayer.ChangeVolume(musicVolume);
         sfxPlayer.ChangeVolume(0);
 
         SFXPlayer.CompletedPlayingSFX += SwitchBackToMusic;
 
         if (autoStartMusic)
         {
-            PlaySong(SongType.Placeholder, loopMusic);
+            PlaySong(SongType.StartAnimSong, loopMusic);
         }
     }
 
@@ -44,7 +47,7 @@ public class AudioPlayer : MonoSingleton<AudioPlayer>
     {
         playingWholeSFX = false;
         sfxPlayer.ChangeVolume(0);
-        musicPlayer.ChangeVolume(volume);
+        musicPlayer.ChangeVolume(musicVolume);
     }
 
     public void PlayInterruptableSFX(SFXType sfxType)
@@ -68,7 +71,7 @@ public class AudioPlayer : MonoSingleton<AudioPlayer>
     private void PlaySFX(SFXType sfxType)
     {
         musicPlayer.ChangeVolume(0);
-        sfxPlayer.ChangeVolume(volume);
+        sfxPlayer.ChangeVolume(sfxVolume);
         sfxPlayer.PlaySFX(sfxType);
     }
 }
