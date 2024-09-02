@@ -118,10 +118,12 @@ public class PlayerController : MonoBehaviour, IBulletTarget
         hasCharacterStartedMoving = false;
         StopCharacter();
         AudioPlayer.Instance.PlaySong(SongType.TimeMovingSong, true);
+
     }
 
     private void RechargeStamina()
     {
+        hasCharacterStartedMoving = false;
         ObjectMovements.timeScale = 1;
         staminaLeft += Time.deltaTime;
 
