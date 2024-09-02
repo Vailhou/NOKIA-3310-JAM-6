@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AudioPlayer : MonoSingleton<AudioPlayer>
 {
+    [SerializeField] private bool autoStartMusic = true;
+    [SerializeField] private bool loopMusic = true;
+
     [Range(0, 1)]
     [SerializeField] private float musicVolume = 1;
 
@@ -14,14 +17,10 @@ public class AudioPlayer : MonoSingleton<AudioPlayer>
     private SFXPlayer sfxPlayer;
     private bool playingWholeSFX = false;
 
-    private void Awake()
+    private void Start()
     {
         musicPlayer = GetComponentInChildren<SongPlayer>();
         sfxPlayer = GetComponentInChildren<SFXPlayer>();
-    }
-
-    private void Start()
-    {
         if (musicPlayer == null) {
             Debug.LogWarning("No Music Player AudioSource childed to " + this);
         }
@@ -32,6 +31,11 @@ public class AudioPlayer : MonoSingleton<AudioPlayer>
         sfxPlayer.ChangeVolume(0);
 
         SFXPlayer.CompletedPlayingSFX += SwitchBackToMusic;
+
+        if (autoStartMusic)
+        {
+            PlaySong(SongType.StartAnimSong, loopMusic);
+        }
     }
 
     public void PlaySong(SongType songType, bool repeat)
